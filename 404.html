@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TORO Server // 公式サイト 制作中</title>
+  <meta name="description" content="マインクラフトのクリエイティブサーバー TORO Server の公式サイトです。ただいま制作中です。">
+  <meta name="theme-color" content="#02030a">
+  <meta property="og:title" content="TORO Server 公式サイト (制作中)">
+  <meta property="og:description" content="ただいま公式サイトを制作中です。ルールや遊び方は Wiki をご覧ください。">
+  <meta property="og:url" content="https://www.torosaba.net/">
+  <link rel="icon" href="/logo.svg" type="image/svg+xml">
+  <style>
+    /* status.torosaba.net (TORO STATUS) と同じ、90 年代の日本の個人ホームページ風。
+       星空のタイル背景に、クリーム色の紙面と二重罫線。本文は黒で読みやすく、見出しだけ派手に。 */
+    :root {
+      --paper: #fffdf2;
+      --paper-alt: #eaf0ff;
+      --paper-head: #ffe9f4;
+      --rule: #3a4a86;
+      --rule-soft: #b9c2e6;
+      --ink: #14141a;
+      --ink-soft: #4a4f63;
+      --mono: "ＭＳ ゴシック", "MS Gothic", "Osaka-Mono", "Courier New", monospace;
+      --up: #0a8a2f;
+      --down: #cc1122;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; padding: 0; overflow-x: hidden; }
+
+    body {
+      min-height: 100vh;
+      color: var(--ink);
+      background-color: #02030a;
+      background-image:
+        radial-gradient(1px 1px at 20px 30px, #ffffff, transparent),
+        radial-gradient(1px 1px at 90px 70px, #bcd4ff, transparent),
+        radial-gradient(1.5px 1.5px at 160px 120px, #ffffff, transparent),
+        radial-gradient(1px 1px at 50px 160px, #9fe6ff, transparent),
+        radial-gradient(1px 1px at 130px 40px, #ffd9f4, transparent),
+        radial-gradient(1.5px 1.5px at 190px 180px, #ffffff, transparent);
+      background-size: 200px 200px;
+      font-family: "ＭＳ Ｐゴシック", "MS PGothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, Osaka, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: #0000ee; }
+    a:visited { color: #551a8b; }
+    a:hover { color: var(--down); background: #ffff99; }
+    ::selection { background: #ffe600; color: var(--ink); }
+
+    .page { max-width: 980px; margin: 0 auto; padding: 16px 10px 44px; }
+
+    .frame {
+      background: var(--paper);
+      border: 3px double var(--rule);
+      box-shadow: 0 0 0 1px #fff, 0 6px 30px rgba(0, 0, 0, 0.5);
+      padding: 12px 14px 18px;
+    }
+
+    .masthead { text-align: center; padding: 8px 4px 12px; border-bottom: 1px dashed var(--rule-soft); }
+    .masthead h1 { margin: 0 0 6px; font-size: clamp(2rem, 7vw, 3.2rem); font-weight: 900; letter-spacing: 0.04em; }
+    .subtitle { margin: 0 0 6px; font-family: var(--mono); color: var(--rule); font-weight: bold; letter-spacing: 0.04em; }
+    .tagline { margin: 0; color: var(--ink); font-size: 0.92rem; }
+
+    .rainbow {
+      background: linear-gradient(90deg, #ff0040, #ff8c00, #ffd000, #00b050, #0080ff, #6a3cff, #ff00aa, #ff0040);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      animation: rainbow-shift 6s linear infinite;
+      filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.25));
+    }
+    @keyframes rainbow-shift { to { background-position: 200% center; } }
+
+    .marquee { overflow: hidden; white-space: nowrap; border: 2px ridge #00ffe1; background: #000010; padding: 5px 0; margin: 12px 0; }
+    .marquee__track { display: inline-flex; gap: 5rem; padding-left: 100%; animation: marquee-scroll 26s linear infinite; }
+    .marquee__track span { font-family: "Courier New", monospace; font-weight: bold; color: #fff066; text-shadow: 0 0 6px #ff0; font-size: 0.92rem; }
+    @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+
+    .layout { display: grid; grid-template-columns: 184px minmax(0, 1fr); gap: 14px; align-items: start; }
+
+    .nav { background: var(--paper-alt); border: 1px solid var(--rule); padding: 8px 10px; font-size: 0.84rem; }
+    .nav__title { text-align: center; font-weight: bold; color: #c01a5b; border-bottom: 1px dashed var(--rule-soft); padding-bottom: 4px; margin-bottom: 6px; }
+    .nav ul { list-style: none; margin: 0; padding: 0; }
+    .nav li { padding: 2px 0; white-space: nowrap; }
+    .nav .ext { font-size: 0.7rem; color: var(--ink-soft); }
+    .nav__rule { color: var(--rule-soft); text-align: center; font-family: var(--mono); margin: 6px 0; overflow: hidden; }
+    .nav__note { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-soft); text-align: center; }
+
+    .section-title {
+      margin: 0 0 8px;
+      padding: 5px 10px;
+      background: var(--paper-head);
+      border-left: 6px solid #c01a5b;
+      border-bottom: 1px solid var(--rule-soft);
+      color: var(--rule);
+      font-size: 1.05rem;
+    }
+    .section-title::before { content: "■ "; }
+
+    /* 工事中の看板 */
+    .construction {
+      margin: 0 0 14px;
+      border: 2px solid #14141a;
+      background: #fff8c4;
+      text-align: center;
+    }
+    .stripes {
+      height: 18px;
+      background: repeating-linear-gradient(-45deg, #ffd000 0 14px, #14141a 14px 28px);
+    }
+    .construction__body { padding: 18px 12px; }
+    .construction__sign { display: inline-block; margin: 0 0 8px; font-size: clamp(2rem, 8vw, 3.4rem); font-weight: 900; color: var(--down); letter-spacing: 0.12em; text-shadow: 3px 3px 0 rgba(204, 17, 34, 0.18); }
+    .construction__sign .blink { animation: blink 1.2s steps(2, start) infinite; }
+    @keyframes blink { 50% { opacity: 0.2; } }
+    .construction p { margin: 6px 0; }
+    .construction small { color: var(--ink-soft); }
+
+    .box { border: 1px solid var(--rule-soft); background: #fff; padding: 10px 12px; margin: 0 0 14px; font-size: 0.92rem; }
+
+    table.info { width: 100%; border-collapse: collapse; border: 1px solid var(--rule); font-size: 0.92rem; }
+    table.info th, table.info td { border: 1px solid var(--rule-soft); padding: 5px 8px; text-align: left; vertical-align: top; }
+    table.info th { width: 8em; white-space: nowrap; background: var(--paper-alt); color: var(--rule); }
+    table.info code { font-family: var(--mono); font-weight: bold; font-size: 1.05rem; }
+
+    .divider { overflow: hidden; white-space: nowrap; height: 1.4em; line-height: 1.4em; margin: 10px 0; font-family: var(--mono); font-size: 0.9rem; color: #4aa3ff; user-select: none; }
+
+    .links { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+    .links a {
+      display: inline-block;
+      padding: 6px 14px;
+      background: var(--paper-head);
+      border: 2px outset var(--rule);
+      color: var(--rule);
+      font-family: var(--mono);
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .links a:hover { background: var(--rule); color: var(--paper); border-style: inset; }
+
+    .foot { margin-top: 16px; text-align: center; color: var(--ink); font-size: 0.82rem; }
+    .foot__rule { color: var(--rule-soft); font-family: var(--mono); overflow: hidden; white-space: nowrap; }
+    .foot p { margin: 8px 0; }
+    .foot__sub { color: var(--ink-soft); font-size: 0.76rem; }
+
+    @media (max-width: 720px) {
+      .layout { grid-template-columns: 1fr; }
+      .nav__title, .nav__rule, .nav__note { display: none; }
+      .nav ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 12px; }
+    }
+    @media (max-width: 480px) {
+      .page { padding: 8px 4px 24px; }
+      .frame { padding: 8px 8px 12px; }
+      table.info th, table.info td { display: block; width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .rainbow, .construction__sign .blink { animation: none; }
+      .marquee__track { animation: none; padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="frame">
+      <header class="masthead">
+        <h1 class="rainbow">TORO Server</h1>
+        <p class="subtitle">～ マインクラフト・クリエイティブサーバー ～</p>
+        <p class="tagline">自由な創作の場を追求する、マインクラフトのクリエイティブサーバーです。</p>
+      </header>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>★ ただいま公式サイトを制作中です ★ ルールや遊び方は Wiki をご覧ください ★ サーバーアドレスは torosaba.net ★</span>
+          <span>★ ただいま公式サイトを制作中です ★ ルールや遊び方は Wiki をご覧ください ★ サーバーアドレスは torosaba.net ★</span>
+        </div>
+      </div>
+
+      <div class="layout">
+        <nav class="nav" aria-label="メニュー">
+          <div class="nav__title">■ メニュー</div>
+          <ul>
+            <li>・<a href="https://wiki.torosaba.net/">Wiki</a></li>
+            <li>・<a href="https://wiki.torosaba.net/wiki/%E3%83%AB%E3%83%BC%E3%83%AB">ルール</a></li>
+            <li>・<a href="https://status.torosaba.net/">稼働状況</a></li>
+            <li>・<a href="https://3d-map.torosaba.net/">3D マップ</a></li>
+            <li>・<a href="https://map.torosaba.net/">2D マップ</a></li>
+            <li>・<a href="https://discord.gg/j7qKSPgSSt" rel="noopener">Discord</a><span class="ext">↗</span></li>
+          </ul>
+          <div class="nav__rule">─────────</div>
+          <div class="nav__note">公式サイトは<br>ただいま制作中</div>
+        </nav>
+
+        <main>
+          <section class="construction" aria-labelledby="construction-title">
+            <div class="stripes"></div>
+            <div class="construction__body">
+              <h2 id="construction-title" class="construction__sign">工事中<span class="blink">!!</span></h2>
+              <p>TORO Server の公式サイトは、ただいま制作中です。</p>
+              <p>完成まで、もうしばらくお待ちください。</p>
+              <p><small>ルール・遊び方・サーバーにある街や鉄道のことは、<a href="https://wiki.torosaba.net/">TORO Server Wiki</a> にまとめています。</small></p>
+            </div>
+            <div class="stripes"></div>
+          </section>
+
+          <h2 class="section-title">サーバーに参加する</h2>
+          <div class="box">
+            <table class="info">
+              <tbody>
+                <tr><th>Java 版</th><td><code>torosaba.net</code></td></tr>
+                <tr><th>統合版</th><td><code>torosaba.net</code> (ポート <code>20080</code>)</td></tr>
+                <tr><th>はじめての方</th><td>参加する前に <a href="https://wiki.torosaba.net/wiki/%E3%83%AB%E3%83%BC%E3%83%AB">ルール</a> をお読みください。</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="divider" aria-hidden="true">〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜</div>
+
+          <h2 class="section-title">リンク</h2>
+          <ul class="links">
+            <li><a href="https://wiki.torosaba.net/">Wiki</a></li>
+            <li><a href="https://status.torosaba.net/">稼働状況</a></li>
+            <li><a href="https://3d-map.torosaba.net/">3D マップ</a></li>
+            <li><a href="https://map.torosaba.net/">2D マップ</a></li>
+            <li><a href="https://discord.gg/j7qKSPgSSt" rel="noopener">Discord</a></li>
+            <li><a href="https://minecraft.jp/servers/torosaba.net/vote" rel="noopener">投票 (JMS)</a></li>
+          </ul>
+        </main>
+      </div>
+
+      <footer class="foot">
+        <div class="foot__rule">──────────────────────────</div>
+        <p class="foot__sub">このサイトは Mojang Studios・Microsoft とは関係ありません。</p>
+        <p class="foot__sub">© TORO Server</p>
+        <div class="foot__rule">──────────────────────────</div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
