@@ -1,0 +1,12 @@
+{
+  "name": "toro-website",
+  "private": true,
+  "description": "TORO Server 公式サイト (www.torosaba.net)",
+  "scripts": {
+    "build": "tsc --noEmit && esbuild src/sw.ts --bundle --format=iife --target=es2020 --charset=utf8 --outfile=sw.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "typescript": "^5.8.0"
+  }
+}

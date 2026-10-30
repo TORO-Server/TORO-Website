@@ -6,9 +6,24 @@ https://www.torosaba.net/
 いまは制作中のため、[TORO Status](https://status.torosaba.net/) と同じ 90 年代の個人ホームページ風デザインの「工事中」ページを置いています。
 Wiki は [TORO-Server/TORO-Wiki-Site](https://github.com/TORO-Server/TORO-Wiki-Site) (https://wiki.torosaba.net/) です。
 
-- `index.html` 1 枚だけの静的なページです。ビルドはありません。
+- `index.html` 1 枚だけの静的なページです (`404.html` は同じ中身のコピー)。
 - `main` ブランチのルートを GitHub Pages で公開しています (カスタムドメイン `www.torosaba.net`)。
 - DNS は [TORO-Server/TORO-Domain](https://github.com/TORO-Server/TORO-Domain) で管理しています。
+
+## PWA (ホーム画面に追加・オフライン表示)
+
+- `manifest.webmanifest` … アプリ名・色・アイコンの設定
+- `icons/` と `apple-touch-icon.png` … `logo.svg` から作った PNG アイコン (512px の maskable は余白つき)
+- `offline.html` … オフラインで、まだ開いたことのないページを開いたときに出すページ
+- `src/sw.ts` … サービスワーカーのソース (TypeScript)。ページは「ネット優先 → キャッシュ → オフライン用ページ」、画像などは stale-while-revalidate。他のサイトへのリクエストはキャッシュしません。
+- `sw.js` … `src/sw.ts` をビルドしたもの。GitHub Pages はリポジトリをそのまま配るので、**ビルド結果もコミットします**。
+
+`src/sw.ts` やキャッシュするファイルを変えたら、`src/sw.ts` の `CACHE` の番号を上げてから作り直してください。
+
+```sh
+npm install
+npm run build   # 型チェック (tsc) のあと、esbuild で sw.js を出力
+```
 
 ## torosaba.net (apex) から www への転送
 

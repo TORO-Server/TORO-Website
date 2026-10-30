@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>TORO Server // オフライン</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#02030a">
+  <link rel="icon" href="/logo.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <style>
+    /* インターネットにつながらないとき、サービスワーカーが出すページ。index.html と同じ見た目。 */
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      color: #14141a;
+      background-color: #02030a;
+      background-image:
+        radial-gradient(1px 1px at 20px 30px, #ffffff, transparent),
+        radial-gradient(1px 1px at 90px 70px, #bcd4ff, transparent),
+        radial-gradient(1.5px 1.5px at 160px 120px, #ffffff, transparent),
+        radial-gradient(1px 1px at 50px 160px, #9fe6ff, transparent),
+        radial-gradient(1px 1px at 130px 40px, #ffd9f4, transparent),
+        radial-gradient(1.5px 1.5px at 190px 180px, #ffffff, transparent);
+      background-size: 200px 200px;
+      font-family: "ＭＳ Ｐゴシック", "MS PGothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, Osaka, sans-serif;
+      line-height: 1.6;
+    }
+    .page {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: max(24px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right)) max(44px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
+    }
+    .frame {
+      background: #fffdf2;
+      border: 3px double #3a4a86;
+      box-shadow: 0 0 0 1px #fff, 0 6px 30px rgba(0, 0, 0, 0.5);
+      padding: 12px 14px 18px;
+      text-align: center;
+    }
+    .stripes { height: 18px; background: repeating-linear-gradient(-45deg, #ffd000 0 14px, #14141a 14px 28px); }
+    .sign { margin: 18px 0 8px; font-size: clamp(1.6rem, 7vw, 2.6rem); font-weight: 900; color: #cc1122; letter-spacing: 0.08em; }
+    p { margin: 6px 0; }
+    small { color: #4a4f63; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      margin: 8px 0 12px;
+      min-height: 44px;
+      padding: 6px 18px;
+      background: #ffe9f4;
+      border: 2px outset #3a4a86;
+      color: #3a4a86;
+      font: bold 1rem "ＭＳ ゴシック", "MS Gothic", "Osaka-Mono", "Courier New", monospace;
+      text-decoration: none;
+    }
+    .button:hover, .button:active { background: #3a4a86; color: #fffdf2; border-style: inset; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="frame">
+      <div class="stripes"></div>
+      <h1 class="sign">オフラインです</h1>
+      <p>インターネットにつながっていないようです。</p>
+      <p><small>つながったら、もう一度ページを開いてください。</small></p>
+      <p><a class="button" href="/">トップページへ</a></p>
+      <div class="stripes"></div>
+    </div>
+  </div>
+</body>
+</html>

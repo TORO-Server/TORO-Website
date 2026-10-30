@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>TORO Server // 公式サイト 制作中</title>
   <meta name="description" content="マインクラフトのクリエイティブサーバー TORO Server の公式サイトです。ただいま制作中です。">
   <meta name="theme-color" content="#02030a">
@@ -10,6 +10,10 @@
   <meta property="og:description" content="ただいま公式サイトを制作中です。ルールや遊び方は Wiki をご覧ください。">
   <meta property="og:url" content="https://www.torosaba.net/">
   <link rel="icon" href="/logo.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="TORO Server">
+  <meta name="mobile-web-app-capable" content="yes">
   <style>
     /* status.torosaba.net (TORO STATUS) と同じ、90 年代の日本の個人ホームページ風。
        星空のタイル背景に、クリーム色の紙面と二重罫線。本文は黒で読みやすく、見出しだけ派手に。 */
@@ -28,6 +32,7 @@
 
     * { box-sizing: border-box; }
 
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
     html, body { margin: 0; padding: 0; overflow-x: hidden; }
 
     body {
@@ -51,7 +56,12 @@
     a:hover { color: var(--down); background: #ffff99; }
     ::selection { background: #ffe600; color: var(--ink); }
 
-    .page { max-width: 980px; margin: 0 auto; padding: 16px 10px 44px; }
+    /* iPhone のノッチやホームバーにかからないよう、safe-area の分だけ余白を広げる (PC では 0 なので見た目は同じ) */
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: max(16px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right)) max(44px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
+    }
 
     .frame {
       background: var(--paper);
@@ -83,6 +93,7 @@
     @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
     .layout { display: grid; grid-template-columns: 184px minmax(0, 1fr); gap: 14px; align-items: start; }
+    .layout > * { min-width: 0; }
 
     .nav { background: var(--paper-alt); border: 1px solid var(--rule); padding: 8px 10px; font-size: 0.84rem; }
     .nav__title { text-align: center; font-weight: bold; color: #c01a5b; border-bottom: 1px dashed var(--rule-soft); padding-bottom: 4px; margin-bottom: 6px; }
@@ -149,12 +160,24 @@
     .foot__sub { color: var(--ink-soft); font-size: 0.76rem; }
 
     @media (max-width: 720px) {
-      .layout { grid-template-columns: 1fr; }
+      /* minmax(0, …) にしないと、横に長い飾り罫 (.divider) の幅に引っぱられて画面の外へはみ出す */
+      .layout { grid-template-columns: minmax(0, 1fr); }
       .nav__title, .nav__rule, .nav__note { display: none; }
-      .nav ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 12px; }
+      .nav ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 8px; }
+      .nav li { padding: 0; }
+      .nav .ext { font-size: 0.75rem; }
+    }
+    /* スマホ・タブレット: 指で押しやすいよう、リンクの当たり判定を 40px 以上にする */
+    @media (max-width: 720px), (pointer: coarse) {
+      .nav a { display: inline-block; min-width: 44px; padding: 10px 8px; text-align: center; }
+      .links a { display: inline-flex; align-items: center; min-height: 44px; }
+      /* 文中のリンクは行の高さを変えずに、上下の余白で当たり判定だけ広げる */
+      .construction a, table.info a { padding: 13px 0; }
     }
     @media (max-width: 480px) {
-      .page { padding: 8px 4px 24px; }
+      .page {
+        padding: max(8px, env(safe-area-inset-top)) max(4px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(4px, env(safe-area-inset-left));
+      }
       .frame { padding: 8px 8px 12px; }
       table.info th, table.info td { display: block; width: 100%; }
     }
@@ -240,5 +263,6 @@
       </footer>
     </div>
   </div>
+  <script>if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));</script>
 </body>
 </html>
