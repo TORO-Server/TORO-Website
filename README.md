@@ -4,7 +4,7 @@ https://www.torosaba.net/
 
 マインクラフトのクリエイティブサーバー **TORO Server** の公式サイトです。
 いまは制作中のため、[TORO Status](https://status.torosaba.net/) と同じ 90 年代の個人ホームページ風デザインの「工事中」ページを置いています。
-Wiki は [TORO-Server/TORO-Wiki-Site](https://github.com/TORO-Server/TORO-Wiki-Site) (https://wiki.torosaba.net/) です。
+Wiki は [TORO-Server/TORO-Wiki](https://github.com/TORO-Server/TORO-Wiki) (https://wiki.torosaba.net/) です。
 
 - `index.html` 1 枚だけの静的なページです (`404.html` は同じ中身のコピー)。
 - `main` ブランチのルートを GitHub Pages で公開しています (カスタムドメイン `www.torosaba.net`)。
