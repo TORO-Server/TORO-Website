@@ -27,7 +27,7 @@ npm run build   # 型チェック (tsc) のあと、esbuild で sw.js を出力
 
 ## torosaba.net (apex) から www への転送
 
-`torosaba.net` は Minecraft の接続先 (Java 版 25565 / 統合版 20080) なので、A レコードは自宅サーバーの IP のまま (Cloudflare のプロキシなし) です。
+`torosaba.net` は Minecraft の接続先 (Java 版 25565 / 統合版 19132) なので、A レコードは自宅サーバーの IP のまま (Cloudflare のプロキシなし) です。
 Cloudflare のリダイレクトルールはプロキシが必要で、使うと Minecraft に接続できなくなるため、
 ブラウザーで `torosaba.net` を開いた人を `https://www.torosaba.net/` へ送るのは、自宅サーバーの 80/443 番ポートで行います。
 

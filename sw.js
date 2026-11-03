@@ -1,7 +1,7 @@
 "use strict";
 (() => {
   // src/sw.ts
-  var CACHE = "toro-website-v1";
+  var CACHE = "toro-website-v2";
   var OFFLINE_URL = "/offline.html";
   var SHELL = [
     "/",

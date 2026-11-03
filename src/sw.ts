@@ -6,7 +6,7 @@ export {}
 declare const self: ServiceWorkerGlobalScope
 
 // 中身 (下の SHELL や offline.html など) を変えたら番号を上げる。古いキャッシュは activate で消える。
-const CACHE = 'toro-website-v1'
+const CACHE = 'toro-website-v2'
 const OFFLINE_URL = '/offline.html'
 const SHELL = [
   '/',
