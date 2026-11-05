@@ -1,11 +1,12 @@
 "use strict";
 (() => {
   // src/sw.ts
-  var CACHE = "toro-website-v2";
+  var CACHE = "toro-website-v3";
   var OFFLINE_URL = "/offline.html";
   var SHELL = [
     "/",
     OFFLINE_URL,
+    "/sw-register.js",
     "/logo.svg",
     "/manifest.webmanifest",
     "/apple-touch-icon.png",

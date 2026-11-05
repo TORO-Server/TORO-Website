@@ -6,11 +6,12 @@ export {}
 declare const self: ServiceWorkerGlobalScope
 
 // 中身 (下の SHELL や offline.html など) を変えたら番号を上げる。古いキャッシュは activate で消える。
-const CACHE = 'toro-website-v2'
+const CACHE = 'toro-website-v3'
 const OFFLINE_URL = '/offline.html'
 const SHELL = [
   '/',
   OFFLINE_URL,
+  '/sw-register.js',
   '/logo.svg',
   '/manifest.webmanifest',
   '/apple-touch-icon.png',

@@ -17,6 +17,7 @@ Wiki は [TORO-Server/TORO-Wiki](https://github.com/TORO-Server/TORO-Wiki) (http
 - `offline.html` … オフラインで、まだ開いたことのないページを開いたときに出すページ
 - `src/sw.ts` … サービスワーカーのソース (TypeScript)。ページは「ネット優先 → キャッシュ → オフライン用ページ」、画像などは stale-while-revalidate。他のサイトへのリクエストはキャッシュしません。
 - `sw.js` … `src/sw.ts` をビルドしたもの。GitHub Pages はリポジトリをそのまま配るので、**ビルド結果もコミットします**。
+- `sw-register.js` … サービスワーカーの登録。各ページの CSP (`<meta http-equiv="Content-Security-Policy">`) がインラインのスクリプトを禁止しているので、ファイルに分けています。
 
 `src/sw.ts` やキャッシュするファイルを変えたら、`src/sw.ts` の `CACHE` の番号を上げてから作り直してください。
 
