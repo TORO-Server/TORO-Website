@@ -2,6 +2,8 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>TORO Server // 公式サイト 制作中</title>
   <meta name="description" content="マインクラフトのクリエイティブサーバー TORO Server の公式サイトです。ただいま制作中です。">
@@ -263,6 +265,6 @@
       </footer>
     </div>
   </div>
-  <script>if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));</script>
+  <script src="/sw-register.js" defer></script>
 </body>
 </html>
