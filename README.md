@@ -15,7 +15,7 @@
 
 ## 作り直し
 
-`src/` を変えたら、次のコマンドで `sw.js` と `sw-register.js` を作り直し、それもコミットしてください (公開側はリポジトリの中身をそのまま配るためです)。
+`src/` を変えたら、次のコマンドで `sw.js` と `sw-register.js` を作り直し、それもコミットしてください (公開側は置き場の中身をそのまま配るためです)。
 
 ```sh
 npm install
@@ -24,5 +24,4 @@ npm run build
 
 ## 関連文書
 
-- 全リポジトリ共通の文章の書き方: [docs/WRITING-STYLE.md](docs/WRITING-STYLE.md)
-- ライセンス: `LICENSE` ファイルを参照してください。
+- すべての置き場に共通の文章の書き方: [docs/WRITING-STYLE.md](docs/WRITING-STYLE.md)
